@@ -92,12 +92,12 @@ analyzeBt = ctk.CTkButton(root, text="Analisar Imagem", command=analyze_image)
 analyzeBt.grid(row=1, column=0, pady=5, padx=5, rowspan=1, sticky="w")
 
 # Label do meio
-classlabel = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.LEFT)
-classlabel.grid(row=0, column=1, pady=5, padx=1, sticky="w", rowspan=1)
+classlabel = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
+classlabel.grid(row=0, column=1, pady=5, padx=1, rowspan=1)
 
 # Label do meio
 conclusionlb = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
-conclusionlb.grid(row=1, column=1, pady=5, padx=1, sticky="w", rowspan=1)
+conclusionlb.grid(row=1, column=1, pady=5, padx=1, rowspan=1)
 
 # Executa a interface gráfica
 root.mainloop()
