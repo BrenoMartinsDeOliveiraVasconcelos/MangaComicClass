@@ -15,6 +15,7 @@ def open_image():
     if image_path:
         convert_to_jpg(image_path)
         display_image()
+        analyze_image()
 
 
 def convert_to_jpg(image_path):
@@ -26,7 +27,7 @@ def convert_to_jpg(image_path):
     im32 = im32.convert('RGB')
     im32.save('input.jpg')
 
-    im = im.resize((int(im.size[0] / 2), int(im.size[1] / 2)))
+    im = im.resize((int(im.size[0] / 3), int(im.size[1] / 3)))
     im.save("tkprint.png")
 
 
@@ -67,13 +68,16 @@ def display_prob():
             textstr += f"{k} = {v}\n"
         else:
             textstr = textstr.strip()
-    classlabel.configure(text=textstr, font=("Arial", 10))
-    conclusionlb.configure(text=f"{data['prediction']}", font=("Arial", 20, "bold"))
+    classlabel.configure(text=textstr, font=("Calibri", 14))
+    conclusionlb.configure(text=f"{data['prediction']}", font=("Calibri", 20, "bold"))
+
+    messagebox.askokcancel(title="Sucesso", message="Imagem analizada com sucesso;")
 
 
 # Interface gráfica
 root = ctk.CTk()
 root.title("Análise de Imagem")
+root.resizable(height=False, width=False)
 
 # Botão para abrir imagem
 openimgBt = ctk.CTkButton(root, text="Abrir Imagem", command=open_image)
@@ -92,7 +96,7 @@ classlabel = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.LEFT)
 classlabel.grid(row=0, column=1, pady=5, padx=1, sticky="w", rowspan=1)
 
 # Label do meio
-conclusionlb = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.LEFT)
+conclusionlb = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
 conclusionlb.grid(row=1, column=1, pady=5, padx=1, sticky="w", rowspan=1)
 
 # Executa a interface gráfica
