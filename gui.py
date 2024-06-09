@@ -27,7 +27,10 @@ def convert_to_jpg(image_path):
     im32 = im32.convert('RGB')
     im32.save('input.jpg')
 
-    im = im.resize((int(im.size[0] / 3), int(im.size[1] / 3)))
+    # Formatar a imagem pra ficar num tamanho certo pra apresentação
+    h = (im.size[0]/im.size[1]) * 400
+
+    im = im.resize((int(h), 400))
     im.save("tkprint.png")
 
 
@@ -79,25 +82,21 @@ root = ctk.CTk()
 root.title("Análise de Imagem")
 root.resizable(height=False, width=False)
 
-# Botão para abrir imagem
-openimgBt = ctk.CTkButton(root, text="Abrir Imagem", command=open_image)
-openimgBt.grid(row=0, column=0, pady=5, padx=5, rowspan=1, sticky="w")
-
-# Rótulo para exibir a imagem
-image_label = ctk.CTkLabel(root, text="", justify=ctk.LEFT, image=tk.PhotoImage(file="placeholder.png"))
-image_label.grid(row=2, column=0, columnspan=2, pady=5, padx=5)
-
-# Botão para analisar imagem
-analyzeBt = ctk.CTkButton(root, text="Analisar Imagem", command=analyze_image)
-analyzeBt.grid(row=1, column=0, pady=5, padx=5, rowspan=1, sticky="w")
-
 # Label do meio
 classlabel = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
-classlabel.grid(row=0, column=1, pady=5, padx=1, rowspan=1)
+classlabel.pack(pady=0)
 
 # Label do meio
 conclusionlb = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
-conclusionlb.grid(row=1, column=1, pady=5, padx=1, rowspan=1)
+conclusionlb.pack(pady=0)
+
+# Rótulo para exibir a imagem
+image_label = ctk.CTkLabel(root, text="", justify=ctk.LEFT, image=tk.PhotoImage(file="placeholder.png"))
+image_label.pack(pady=5, padx=5)
+
+# Botão para abrir imagem
+openimgBt = ctk.CTkButton(root, text="Abrir Imagem", command=open_image)
+openimgBt.pack(pady=5)
 
 # Executa a interface gráfica
 root.mainloop()

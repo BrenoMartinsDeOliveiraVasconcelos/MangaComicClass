@@ -86,7 +86,7 @@ model.add(layers.Dense(10, activation='softmax'))
 
 model.compile(optimizer='adam', loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
-model.fit(training_images, training_labels, epochs=2, validation_data=(testing_images, testing_labels))
+model.fit(training_images, training_labels, epochs=10, validation_data=(testing_images, testing_labels))
 
 loss, accuracy = model.evaluate(testing_images, testing_labels)
 print(f"LOSS: {loss}\nACCURACY: {accuracy}")
