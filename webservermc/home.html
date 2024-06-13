@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envie a imagem</title>
+</head>
+<body>
+    <h1>Upload de Imagem</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="file" accept="image/*" required>
+        <button type="button" onclick="uploadImage()">Upload</button>
+    </form>
+    <div id="result">
+    </div>
+    <div id="image">
+    
+    </div>
+    <script>
+        function uploadImage() {
+            const form = document.getElementById('uploadForm');
+            const formData = new FormData(form);
+
+
+            fetch('http://127.0.0.1:8000/upload/', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                const dataArray = data.split("PATH=");
+
+                document.getElementById('result').innerText = dataArray[0];
+                console.log("Sending request to upload image...");
+
+                const imagePath = "upload/"+dataArray[1];
+
+                const image = new Image();
+                image.src = imagePath;
+
+                const imageDiv = document.getElementById('image');
+                imageDiv.appendChild(image);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import cv2
 import matplotlib.pyplot as plt
-from tensorflow.keras import datasets, layers, models
+from tensorflow.keras import models
 import numpy as np
 import json
 

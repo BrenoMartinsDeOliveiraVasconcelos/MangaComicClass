@@ -79,15 +79,15 @@ def display_prob():
 
 # Interface gráfica
 root = ctk.CTk()
-root.title("Análise de Imagem")
+root.title("MC Tool")
 root.resizable(height=False, width=False)
 
 # Label do meio
-classlabel = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
+classlabel = ctk.CTkLabel(root, text="Esperando input...", justify=ctk.CENTER)
 classlabel.pack(pady=0)
 
 # Label do meio
-conclusionlb = ctk.CTkLabel(root, text="PLACEHOLDER", justify=ctk.CENTER)
+conclusionlb = ctk.CTkLabel(root, text="Sem input", justify=ctk.CENTER)
 conclusionlb.pack(pady=0)
 
 # Rótulo para exibir a imagem
@@ -95,7 +95,7 @@ image_label = ctk.CTkLabel(root, text="", justify=ctk.LEFT, image=tk.PhotoImage(
 image_label.pack(pady=5, padx=5)
 
 # Botão para abrir imagem
-openimgBt = ctk.CTkButton(root, text="Abrir Imagem", command=open_image)
+openimgBt = ctk.CTkButton(root, text="Enviar imagem", command=open_image)
 openimgBt.pack(pady=5)
 
 # Executa a interface gráfica
