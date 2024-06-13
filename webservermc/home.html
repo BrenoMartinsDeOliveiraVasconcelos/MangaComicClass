@@ -3,17 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Envie a imagem</title>
+  <link rel="stylesheet" href="">
+  <title>Convolutional Neural Network</title>
+  <link rel="stylesheet" href="static/css/home.css">
+  <link rel="icon" href="rede-neural.png" type="image/x-icon">
 </head>
 <body>
-  <h1>Upload de Imagem</h1>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" id="fileInput" name="file" accept="image/*" required>
-    <button type="button" onclick="uploadImage()">Upload</button>
-  </form>
-  <div id="result">
-  </div>
-  <div id="image">  </div>
+    <div class="container">
+        <header>
+            <h1>Bem-vindo à Nossa IA de Processamento de Imagens</h1>
+            <p>Use esta ferramenta para carregar e analisar suas imagens.</p>
+        </header>
+
+        <main>
+            
+            <form id="uploadForm" enctype="multipart/form-data">
+                <label for="fileInput">Escolha um arquivo</label>
+                <input type="file" id="fileInput" name="file" accept="image/*" required>
+                <button type="button" onclick="uploadImage()">Upload</button>
+            </form>
+            <div id="result"></div>
+            <div id="image"></div>
+        </main>
+
+        <footer>
+            <p>É uma IA de indentificação de mangá e HQ clássico. Utilize para o que for útil.</p>
+        </footer>
+    </div>
     <script>
         function uploadImage() {
             const form = document.getElementById('uploadForm');
@@ -43,6 +59,7 @@
                 };
 
                 imageDiv.appendChild(image);
+
             })
             .catch(error => {
                 console.error('Error:', error);
