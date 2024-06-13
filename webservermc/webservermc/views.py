@@ -2,7 +2,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from tensorflow.keras import datasets, layers, models
 import numpy as np
-
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.handlers.wsgi import WSGIRequest
@@ -12,6 +12,7 @@ from os import path as p
 
 realpath = Path(__file__).resolve().parent.parent.parent
 upath = p.join(realpath, "webservermc", 'uploads')
+fs = FileSystemStorage()
 
 def home(request):
     context = {
@@ -47,6 +48,11 @@ def upload(request: WSGIRequest):
             im32 = im.resize((128, 128))
             im32 = im32.convert('RGB')
 
+            h = (im.size[0]/im.size[1]) * 400
+
+            im = im.resize((int(h), 400))
+            im.save(upload_path)
+
             # Load the model
             model_path = p.join(realpath, "manga_hq_classifier.keras")
 
@@ -74,4 +80,4 @@ def upload(request: WSGIRequest):
 
                 textstr += f"{k} = {v}\n"
 
-            return HttpResponse(textstr+f"\nPATH={filename}")
+            return HttpResponse(textstr+f"\nPATH={fs.url(filename)}")

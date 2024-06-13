@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envie a imagem</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envie a imagem</title>
 </head>
 <body>
-    <h1>Upload de Imagem</h1>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" id="fileInput" name="file" accept="image/*" required>
-        <button type="button" onclick="uploadImage()">Upload</button>
-    </form>
-    <div id="result">
-    </div>
-    <div id="image">
-    
-    </div>
+  <h1>Upload de Imagem</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" id="fileInput" name="file" accept="image/*" required>
+    <button type="button" onclick="uploadImage()">Upload</button>
+  </form>
+  <div id="result">
+  </div>
+  <div id="image">  </div>
     <script>
         function uploadImage() {
             const form = document.getElementById('uploadForm');
@@ -33,13 +31,19 @@
                 document.getElementById('result').innerText = dataArray[0];
                 console.log("Sending request to upload image...");
 
-                const imagePath = "upload/"+dataArray[1];
+                const imagePath = dataArray[1];
 
                 const image = new Image();
                 image.src = imagePath;
 
                 const imageDiv = document.getElementById('image');
+
+                while (imageDiv.firstChild) {
+                    imageDiv.removeChild(imageDiv.firstChild);
+                };
+
                 imageDiv.appendChild(image);
+                imageDiv.removeChild()
             })
             .catch(error => {
                 console.error('Error:', error);
