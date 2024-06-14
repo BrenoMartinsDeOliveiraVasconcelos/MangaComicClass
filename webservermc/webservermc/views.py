@@ -48,9 +48,9 @@ def upload(request: WSGIRequest):
             im32 = im.resize((128, 128))
             im32 = im32.convert('RGB')
 
-            h = (im.size[0]/im.size[1]) * 400
+            h = (im.size[0]/im.size[1]) * 300
 
-            im = im.resize((int(h), 400))
+            im = im.resize((int(h), 300))
             im.save(upload_path)
 
             # Load the model

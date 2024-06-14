@@ -91,5 +91,8 @@ model.fit(training_images, training_labels, epochs=10, validation_data=(testing_
 loss, accuracy = model.evaluate(testing_images, testing_labels)
 print(f"LOSS: {loss}\nACCURACY: {accuracy}")
 
+
 model.save("manga_hq_classifier.keras")
+
+
 
