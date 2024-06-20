@@ -1,0 +1,9 @@
+tensorflow
+django
+opencv-python
+numpy
+matplotlib
+pillow
+keras
+tkinter
+customtkinter
